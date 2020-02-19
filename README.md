@@ -1,2 +1,3 @@
-# bela.el
+# bela-mode.el
+
 Integration with Bela scripts
