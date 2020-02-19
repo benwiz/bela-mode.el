@@ -24,7 +24,7 @@
 
 ;; TODO defcustom for bbb-address. Make sure to have a good default. Maybe have a default for bela-scripts-dir, it's mainly for me anyway.
 ;; TODO a flag for force overwrite. It's `--force` on build_project.sh
-;; TODO need to get project directory somehow
+;; TODO need to get project directory somehow. Probably just take the current file's directory. Don't necessary want root of version control.
 ;; BBB_ADDRESS=root@192.168.6.2 ./build_project.sh ../examples/Fundamentals/print/
 
 (defcustom bela-scripts-dir nil
@@ -54,7 +54,7 @@
 (defun bela-build-project ()
   "Call my_test.sh."
   (interactive)
-  (shell-command (command "build_project.sh ~/code/bela-dsp/looper/")))
+  (shell-command (command "build_project.sh ~/code/bela-dsp/looper/ -b")))
 
 (defun bela-stop-running ()
   "Call my_test.sh."
@@ -67,6 +67,8 @@
   :lighter " bela"
   :keymap (let ((map (make-sparse-keymap)))
             (define-key map (kbd "C-c t") 'bela-my-test)
+            (define-key map (kbd "C-c C-e") 'bela-build-project)
+            (define-key map (kbd "C-c C-q") 'bela-stop-running)
             map))
 
 (provide 'bela-mode)
