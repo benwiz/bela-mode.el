@@ -25,6 +25,8 @@
 ;; TODO defcustom for bbb-address. Make sure to have a good default. Maybe have a default for bela-scripts-dir, it's mainly for me anyway.
 ;; TODO a flag for force overwrite. It's `--force` on build_project.sh
 ;; TODO need to get project directory somehow. Probably just take the current file's directory. Don't necessary want root of version control.
+;; TODO Run `connect_to_project.sh` and tail the output in a new buffer
+
 ;; BBB_ADDRESS=root@192.168.6.2 ./build_project.sh ../examples/Fundamentals/print/
 
 (defcustom bela-scripts-dir nil
@@ -60,6 +62,11 @@
   "Call my_test.sh."
   (interactive)
   (shell-command (command "stop_running.sh")))
+
+(defun bela-halt-board ()
+  "Halt the board."
+  (interactive)
+  (shell-command (command "halt_board.sh")))
 
 ;;;###autoload
 (define-minor-mode bela-mode
