@@ -73,7 +73,6 @@
   "Minor mode for calling Bela scripts"
   :lighter " bela"
   :keymap (let ((map (make-sparse-keymap)))
-            (define-key map (kbd "C-c t") 'bela-my-test)
             (define-key map (kbd "C-c C-e") 'bela-build-project)
             (define-key map (kbd "C-c C-q") 'bela-stop-running)
             map))
