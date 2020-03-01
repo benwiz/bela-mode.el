@@ -18,6 +18,12 @@
 
 ;; short description here
 
+;; NOTE had to add this to the bela's .bashrc
+;; if [ "$TERM" = "eterm-color" ] ; then
+;;  TERM="vt100"
+;; fi
+
+
 ;; full doc on how to use here
 
 ;;; Code:
@@ -25,7 +31,7 @@
 ;; TODO defcustom for bbb-address. Make sure to have a good default. Maybe have a default for bela-scripts-dir, it's mainly for me anyway.
 ;; TODO a flag for force overwrite. It's `--force` on build_project.sh
 ;; TODO need to get project directory somehow. Probably just take the current file's directory. Don't necessary want root of version control.
-;; TODO Run `connect_to_project.sh` and tail the output in a new buffer
+;; TODO Run `connect_to_project.sh` and tail the output in a new buffer or itail a file over ssh
 
 ;; BBB_ADDRESS=root@192.168.6.2 ./build_project.sh ../examples/Fundamentals/print/
 
@@ -57,6 +63,13 @@
   "Call my_test.sh."
   (interactive)
   (shell-command (command "build_project.sh ~/code/bela-dsp/looper/ -b")))
+
+;; TODO right now this just copies to clipboard with intention to paste into external shell,
+;; would be better to make this more integrated
+(defun bela-connect-to-project ()
+  "Connect to project to stream logs."
+  (interactive)
+  (kill-new (command "connect_to_project.sh")))
 
 (defun bela-stop-running ()
   "Call my_test.sh."
