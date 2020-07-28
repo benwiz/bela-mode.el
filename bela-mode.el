@@ -62,7 +62,8 @@
 (defun bela-build-project ()
   "Call my_test.sh."
   (interactive)
-  (shell-command (command "build_project.sh ~/code/bela-dsp/looper/ -b")))
+  (let ((default-directory (file-name-directory buffer-file-name)))
+    (shell-command (command (concat  "build_project.sh ./ -b")))))
 
 ;; TODO right now this just copies to clipboard with intention to paste into external shell,
 ;; would be better to make this more integrated
